@@ -9,15 +9,25 @@ enum class Color{
 Color& operator++(Color& t){
     switch (t)
     {
-    case Color::red: return t=Color::green;
-    case Color::green: return t=Color::yellow;
-    case Color::yellow: return t=Color::red;
-    
+        case Color::red: return t=Color::green;
+        case Color::green: return t=Color::yellow;
+        case Color::yellow: return t=Color::red;
     } 
 }
+
+Color& operator--(Color& t){
+    switch (t)
+    {
+        case Color::red: return t=Color::yellow;
+        case Color::yellow: return t=Color::green;
+        case Color::green: return t=Color::red;
+    }
+}
+
+
 
 
 int main(){
     Color color=Color::red;
-    Color next=++color;
+    Color next=++color; //increamentation
 }
