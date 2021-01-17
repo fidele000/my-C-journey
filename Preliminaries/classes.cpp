@@ -17,7 +17,7 @@ class Pointer{
 
 class Set{
     public:
-        void Emptyset(void){ card=0; }
+        void EmptySet(void){ card=0; }
         bool Member (const int);
         bool Number(const int);
         void AddElem(const int);
@@ -102,8 +102,26 @@ void Set::Print(void){
     cout<<"}"<<endl;
 }
 
+void Set::Copy (Set &set)
+{
+    for (register int i = 0; i < card; ++i)
+        set.elem[i] = elem[i];
+    set.card = card;
+}
 int main(){
-    Pointer pt;
-    pt.SetPt(10,20);
-    pt.OffsetPt(3,4);
+    
+    Set s1, s2, s3;
+    s1.EmptySet(); s2.EmptySet(); s3.EmptySet();
+    s1.AddElem(10); s1.AddElem(20); s1.AddElem(30); s1.AddElem(40);
+    s2.AddElem(30); s2.AddElem(50); s2.AddElem(10); s2.AddElem(60);
+    cout << "s1 = ";s1.Print();
+    cout << "s2 = ";s2.Print();
+    s2.RmvElem(50); cout << "s2 - {50} = ";
+    if (s1.Member(20)) cout << "20 is in s1\n";
+    
+    s1.Intersect(s2,s3); cout << "s1 intsec s2 = "; s3.Print();
+    s1.Union(s2,s3); cout << "s1 union s2 = "; s3.Print();
+    if (!s1.Equal(s2)) cout << "s1 /= s2\n";
+    return 0;
+
 }
