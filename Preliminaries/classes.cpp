@@ -99,6 +99,7 @@ void Set::Print(void){
             cout<<elem[i];
         cout<<",";
     }
+    cout<<"}"<<endl;
 }
 
 int main(){
